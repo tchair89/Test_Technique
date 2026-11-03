@@ -1,0 +1,183 @@
+{
+  "Comment": "EDR async workflow; dynamic wait on 429; bounded retry for 5xx/timeouts",
+  "StartAt": "MarkRunning",
+  "States": {
+    "MarkRunning": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::dynamodb:updateItem",
+      "Parameters": {
+        "TableName": "${table_name}",
+        "Key": {
+          "requestId": {
+            "S.$": "$.requestId"
+          }
+        },
+        "UpdateExpression": "SET #s = :s",
+        "ExpressionAttributeNames": {
+          "#s": "status"
+        },
+        "ExpressionAttributeValues": {
+          ":s": {
+            "S": "RUNNING"
+          }
+        }
+      },
+      "ResultPath": null,
+      "Next": "Validate",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "ResultPath": "$.error",
+          "Next": "RecordFailure"
+        }
+      ]
+    },
+    "Validate": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${validate_arn}",
+        "Payload.$": "$"
+      },
+      "ResultPath": "$.validation",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "ResultPath": "$.error",
+          "Next": "RecordFailure"
+        }
+      ],
+      "Next": "Authorize"
+    },
+    "Authorize": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${authorize_arn}",
+        "Payload.$": "$"
+      },
+      "ResultPath": "$.authorization",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "ResultPath": "$.error",
+          "Next": "RecordFailure"
+        }
+      ],
+      "Next": "InvokeProvider"
+    },
+    "InvokeProvider": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${provider_arn}",
+        "Payload.$": "$"
+      },
+      "ResultPath": "$.upstream",
+      "TimeoutSeconds": 20,
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "TemporaryUpstreamError",
+            "UpstreamTimeoutError",
+            "States.Timeout",
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "BackoffRate": 2,
+          "MaxAttempts": 3,
+          "MaxDelaySeconds": 10
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "ResultPath": "$.error",
+          "Next": "RecordFailure"
+        }
+      ],
+      "Next": "CheckProviderResponse"
+    },
+    "CheckProviderResponse": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.upstream.Payload.statusCode",
+          "NumericEquals": 200,
+          "Next": "RecordSuccess"
+        },
+        {
+          "Variable": "$.upstream.Payload.statusCode",
+          "NumericEquals": 429,
+          "Next": "CheckRetryBudget"
+        }
+      ],
+      "Default": "RecordFailure"
+    },
+    "CheckRetryBudget": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.attempt",
+          "NumericGreaterThanEquals": 3,
+          "Next": "RecordFailure"
+        }
+      ],
+      "Default": "WaitRetryAfter"
+    },
+    "WaitRetryAfter": {
+      "Type": "Wait",
+      "SecondsPath": "$.upstream.Payload.retryAfterSeconds",
+      "Next": "IncrementAttempt"
+    },
+    "IncrementAttempt": {
+      "Type": "Pass",
+      "Parameters": {
+        "requestId.$": "$.requestId",
+        "owner.$": "$.owner",
+        "service.$": "$.service",
+        "operation.$": "$.operation",
+        "parameters.$": "$.parameters",
+        "attempt.$": "States.MathAdd($.attempt, 1)"
+      },
+      "Next": "InvokeProvider"
+    },
+    "RecordSuccess": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${success_arn}",
+        "Payload.$": "$"
+      },
+      "End": true,
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "ResultPath": "$.error",
+          "Next": "RecordFailure"
+        }
+      ]
+    },
+    "RecordFailure": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${failure_arn}",
+        "Payload.$": "$"
+      },
+      "End": true
+    }
+  }
+}

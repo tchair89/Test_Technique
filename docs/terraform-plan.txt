@@ -1,0 +1,1411 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_api_gateway_deployment.edr will be created
+  + resource "aws_api_gateway_deployment" "edr" {
+      + created_date = (known after apply)
+      + id           = (known after apply)
+      + region       = "eu-west-3"
+      + rest_api_id  = (known after apply)
+      + triggers     = (known after apply)
+    }
+
+  # aws_api_gateway_integration.routes["result"] will be created
+  + resource "aws_api_gateway_integration" "routes" {
+      + cache_namespace         = (known after apply)
+      + connection_type         = "INTERNET"
+      + http_method             = "GET"
+      + id                      = (known after apply)
+      + integration_http_method = "POST"
+      + passthrough_behavior    = (known after apply)
+      + region                  = "eu-west-3"
+      + resource_id             = (known after apply)
+      + response_transfer_mode  = (known after apply)
+      + rest_api_id             = (known after apply)
+      + timeout_milliseconds    = 29000
+      + type                    = "AWS_PROXY"
+      + uri                     = (known after apply)
+    }
+
+  # aws_api_gateway_integration.routes["status"] will be created
+  + resource "aws_api_gateway_integration" "routes" {
+      + cache_namespace         = (known after apply)
+      + connection_type         = "INTERNET"
+      + http_method             = "GET"
+      + id                      = (known after apply)
+      + integration_http_method = "POST"
+      + passthrough_behavior    = (known after apply)
+      + region                  = "eu-west-3"
+      + resource_id             = (known after apply)
+      + response_transfer_mode  = (known after apply)
+      + rest_api_id             = (known after apply)
+      + timeout_milliseconds    = 29000
+      + type                    = "AWS_PROXY"
+      + uri                     = (known after apply)
+    }
+
+  # aws_api_gateway_integration.routes["submit"] will be created
+  + resource "aws_api_gateway_integration" "routes" {
+      + cache_namespace         = (known after apply)
+      + connection_type         = "INTERNET"
+      + http_method             = "POST"
+      + id                      = (known after apply)
+      + integration_http_method = "POST"
+      + passthrough_behavior    = (known after apply)
+      + region                  = "eu-west-3"
+      + resource_id             = (known after apply)
+      + response_transfer_mode  = (known after apply)
+      + rest_api_id             = (known after apply)
+      + timeout_milliseconds    = 29000
+      + type                    = "AWS_PROXY"
+      + uri                     = (known after apply)
+    }
+
+  # aws_api_gateway_method.routes["result"] will be created
+  + resource "aws_api_gateway_method" "routes" {
+      + api_key_required = false
+      + authorization    = "AWS_IAM"
+      + http_method      = "GET"
+      + id               = (known after apply)
+      + region           = "eu-west-3"
+      + resource_id      = (known after apply)
+      + rest_api_id      = (known after apply)
+    }
+
+  # aws_api_gateway_method.routes["status"] will be created
+  + resource "aws_api_gateway_method" "routes" {
+      + api_key_required = false
+      + authorization    = "AWS_IAM"
+      + http_method      = "GET"
+      + id               = (known after apply)
+      + region           = "eu-west-3"
+      + resource_id      = (known after apply)
+      + rest_api_id      = (known after apply)
+    }
+
+  # aws_api_gateway_method.routes["submit"] will be created
+  + resource "aws_api_gateway_method" "routes" {
+      + api_key_required = false
+      + authorization    = "AWS_IAM"
+      + http_method      = "POST"
+      + id               = (known after apply)
+      + region           = "eu-west-3"
+      + resource_id      = (known after apply)
+      + rest_api_id      = (known after apply)
+    }
+
+  # aws_api_gateway_method_settings.throttle will be created
+  + resource "aws_api_gateway_method_settings" "throttle" {
+      + id          = (known after apply)
+      + method_path = "*/*"
+      + region      = "eu-west-3"
+      + rest_api_id = (known after apply)
+      + stage_name  = "dev"
+
+      + settings {
+          + cache_data_encrypted                       = (known after apply)
+          + cache_ttl_in_seconds                       = (known after apply)
+          + caching_enabled                            = (known after apply)
+          + data_trace_enabled                         = (known after apply)
+          + logging_level                              = (known after apply)
+          + metrics_enabled                            = true
+          + require_authorization_for_cache_control    = (known after apply)
+          + throttling_burst_limit                     = 10
+          + throttling_rate_limit                      = 5
+          + unauthorized_cache_control_header_strategy = (known after apply)
+        }
+    }
+
+  # aws_api_gateway_resource.request_id will be created
+  + resource "aws_api_gateway_resource" "request_id" {
+      + id          = (known after apply)
+      + parent_id   = (known after apply)
+      + path        = (known after apply)
+      + path_part   = "{requestId}"
+      + region      = "eu-west-3"
+      + rest_api_id = (known after apply)
+    }
+
+  # aws_api_gateway_resource.requests will be created
+  + resource "aws_api_gateway_resource" "requests" {
+      + id          = (known after apply)
+      + parent_id   = (known after apply)
+      + path        = (known after apply)
+      + path_part   = "requests"
+      + region      = "eu-west-3"
+      + rest_api_id = (known after apply)
+    }
+
+  # aws_api_gateway_resource.result will be created
+  + resource "aws_api_gateway_resource" "result" {
+      + id          = (known after apply)
+      + parent_id   = (known after apply)
+      + path        = (known after apply)
+      + path_part   = "result"
+      + region      = "eu-west-3"
+      + rest_api_id = (known after apply)
+    }
+
+  # aws_api_gateway_rest_api.edr will be created
+  + resource "aws_api_gateway_rest_api" "edr" {
+      + api_key_source               = (known after apply)
+      + arn                          = (known after apply)
+      + binary_media_types           = (known after apply)
+      + created_date                 = (known after apply)
+      + description                  = (known after apply)
+      + disable_execute_api_endpoint = (known after apply)
+      + execution_arn                = (known after apply)
+      + id                           = (known after apply)
+      + minimum_compression_size     = (known after apply)
+      + name                         = "edr-dev-api"
+      + policy                       = (known after apply)
+      + region                       = "eu-west-3"
+      + root_resource_id             = (known after apply)
+      + security_policy              = (known after apply)
+      + tags                         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                     = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+
+      + endpoint_configuration {
+          + ip_address_type  = (known after apply)
+          + types            = [
+              + "REGIONAL",
+            ]
+          + vpc_endpoint_ids = (known after apply)
+        }
+    }
+
+  # aws_api_gateway_stage.edr will be created
+  + resource "aws_api_gateway_stage" "edr" {
+      + arn           = (known after apply)
+      + deployment_id = (known after apply)
+      + execution_arn = (known after apply)
+      + id            = (known after apply)
+      + invoke_url    = (known after apply)
+      + region        = "eu-west-3"
+      + rest_api_id   = (known after apply)
+      + stage_name    = "dev"
+      + tags          = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all      = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + web_acl_arn   = (known after apply)
+    }
+
+  # aws_cloudwatch_log_group.lambdas["authorize"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-authorize"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.lambdas["failure"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-failure"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.lambdas["provider"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-provider"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.lambdas["result"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-result"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.lambdas["status"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-status"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.lambdas["submit"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-submit"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.lambdas["success"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-success"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.lambdas["validate"] will be created
+  + resource "aws_cloudwatch_log_group" "lambdas" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/lambda/edr-dev-validate"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_cloudwatch_log_group.stepfunctions will be created
+  + resource "aws_cloudwatch_log_group" "stepfunctions" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + id                          = (known after apply)
+      + log_group_class             = (known after apply)
+      + name                        = "/aws/states/edr-dev"
+      + name_prefix                 = (known after apply)
+      + region                      = "eu-west-3"
+      + retention_in_days           = 14
+      + skip_destroy                = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_dynamodb_table.requests will be created
+  + resource "aws_dynamodb_table" "requests" {
+      + arn              = (known after apply)
+      + billing_mode     = "PAY_PER_REQUEST"
+      + hash_key         = "requestId"
+      + id               = (known after apply)
+      + name             = "edr-dev-requests"
+      + read_capacity    = (known after apply)
+      + region           = "eu-west-3"
+      + stream_arn       = (known after apply)
+      + stream_label     = (known after apply)
+      + stream_view_type = (known after apply)
+      + tags             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + write_capacity   = (known after apply)
+
+      + attribute {
+          + name = "requestId"
+          + type = "S"
+        }
+
+      + global_secondary_index (known after apply)
+
+      + global_table_witness (known after apply)
+
+      + point_in_time_recovery {
+          + enabled                 = true
+          + recovery_period_in_days = (known after apply)
+        }
+
+      + server_side_encryption {
+          + enabled     = true
+          + kms_key_arn = (known after apply)
+        }
+
+      + ttl (known after apply)
+
+      + warm_throughput (known after apply)
+    }
+
+  # aws_iam_role.lambda["authorize"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-authorize-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.lambda["failure"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-failure-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.lambda["provider"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-provider-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.lambda["result"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-result-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.lambda["status"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-status-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.lambda["submit"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-submit-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.lambda["success"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-success-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.lambda["validate"] will be created
+  + resource "aws_iam_role" "lambda" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-validate-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.stepfunctions will be created
+  + resource "aws_iam_role" "stepfunctions" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "states.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "edr-dev-sfn-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["authorize"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-authorize-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["failure"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-failure-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["provider"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-provider-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["result"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-result-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["status"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-status-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["submit"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-submit-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["success"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-success-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.lambda["validate"] will be created
+  + resource "aws_iam_role_policy" "lambda" {
+      + id          = (known after apply)
+      + name        = "edr-dev-validate-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_iam_role_policy.stepfunctions will be created
+  + resource "aws_iam_role_policy" "stepfunctions" {
+      + id          = (known after apply)
+      + name        = "edr-dev-sfn-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = (known after apply)
+    }
+
+  # aws_lambda_function.handlers["authorize"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-authorize"
+      + handler                        = "handlers.authorize.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 10
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_function.handlers["failure"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-failure"
+      + handler                        = "handlers.failure.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 10
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_function.handlers["provider"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-provider"
+      + handler                        = "handlers.provider.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 15
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_function.handlers["result"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-result"
+      + handler                        = "handlers.result.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 10
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_function.handlers["status"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-status"
+      + handler                        = "handlers.status.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 10
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_function.handlers["submit"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-submit"
+      + handler                        = "handlers.submit.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 10
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_function.handlers["success"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-success"
+      + handler                        = "handlers.success.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 10
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_function.handlers["validate"] will be created
+  + resource "aws_lambda_function" "handlers" {
+      + architectures                  = (known after apply)
+      + arn                            = (known after apply)
+      + code_sha256                    = (known after apply)
+      + filename                       = "./edr-lambdas.zip"
+      + function_name                  = "edr-dev-validate"
+      + handler                        = "handlers.validate.handler"
+      + id                             = (known after apply)
+      + invoke_arn                     = (known after apply)
+      + last_modified                  = (known after apply)
+      + memory_size                    = 128
+      + package_type                   = "Zip"
+      + publish                        = false
+      + qualified_arn                  = (known after apply)
+      + qualified_invoke_arn           = (known after apply)
+      + region                         = "eu-west-3"
+      + reserved_concurrent_executions = -1
+      + response_streaming_invoke_arn  = (known after apply)
+      + role                           = (known after apply)
+      + runtime                        = "python3.12"
+      + signing_job_arn                = (known after apply)
+      + signing_profile_version_arn    = (known after apply)
+      + skip_destroy                   = false
+      + source_code_hash               = "CDTi4W/HJEa5Y0QCkXToVKJW664z4Pu/6JhX/X5z/pM="
+      + source_code_size               = (known after apply)
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + timeout                        = 10
+      + version                        = (known after apply)
+
+      + environment {
+          + variables = (known after apply)
+        }
+
+      + ephemeral_storage (known after apply)
+
+      + logging_config (known after apply)
+
+      + tracing_config (known after apply)
+    }
+
+  # aws_lambda_permission.api["result"] will be created
+  + resource "aws_lambda_permission" "api" {
+      + action              = "lambda:InvokeFunction"
+      + function_name       = "edr-dev-result"
+      + id                  = (known after apply)
+      + principal           = "apigateway.amazonaws.com"
+      + region              = "eu-west-3"
+      + source_arn          = (known after apply)
+      + statement_id        = "AllowApiGateway-result"
+      + statement_id_prefix = (known after apply)
+    }
+
+  # aws_lambda_permission.api["status"] will be created
+  + resource "aws_lambda_permission" "api" {
+      + action              = "lambda:InvokeFunction"
+      + function_name       = "edr-dev-status"
+      + id                  = (known after apply)
+      + principal           = "apigateway.amazonaws.com"
+      + region              = "eu-west-3"
+      + source_arn          = (known after apply)
+      + statement_id        = "AllowApiGateway-status"
+      + statement_id_prefix = (known after apply)
+    }
+
+  # aws_lambda_permission.api["submit"] will be created
+  + resource "aws_lambda_permission" "api" {
+      + action              = "lambda:InvokeFunction"
+      + function_name       = "edr-dev-submit"
+      + id                  = (known after apply)
+      + principal           = "apigateway.amazonaws.com"
+      + region              = "eu-west-3"
+      + source_arn          = (known after apply)
+      + statement_id        = "AllowApiGateway-submit"
+      + statement_id_prefix = (known after apply)
+    }
+
+  # aws_secretsmanager_secret.provider will be created
+  + resource "aws_secretsmanager_secret" "provider" {
+      + arn                            = (known after apply)
+      + description                    = "Optional provider token; set secret VALUE separately and never via Terraform state"
+      + force_overwrite_replica_secret = false
+      + id                             = (known after apply)
+      + name                           = "edr-dev-provider-credentials"
+      + name_prefix                    = (known after apply)
+      + policy                         = (known after apply)
+      + recovery_window_in_days        = 7
+      + region                         = "eu-west-3"
+      + tags                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                       = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+    }
+
+  # aws_sfn_state_machine.edr will be created
+  + resource "aws_sfn_state_machine" "edr" {
+      + arn                       = (known after apply)
+      + creation_date             = (known after apply)
+      + definition                = (known after apply)
+      + description               = (known after apply)
+      + id                        = (known after apply)
+      + name                      = "edr-dev-workflow"
+      + name_prefix               = (known after apply)
+      + publish                   = false
+      + region                    = "eu-west-3"
+      + revision_id               = (known after apply)
+      + role_arn                  = (known after apply)
+      + state_machine_version_arn = (known after apply)
+      + status                    = (known after apply)
+      + tags                      = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + tags_all                  = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "edr"
+        }
+      + type                      = "STANDARD"
+      + version_description       = (known after apply)
+
+      + encryption_configuration (known after apply)
+
+      + logging_configuration {
+          + include_execution_data = false
+          + level                  = "ERROR"
+          + log_destination        = (known after apply)
+        }
+
+      + tracing_configuration (known after apply)
+    }
+
+Plan: 54 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + api_url      = (known after apply)
+  + secret_arn   = (known after apply)
+  + workflow_arn = (known after apply)

@@ -1,0 +1,7 @@
+{
+  "service": "automotive-data-center",
+  "operation": "get-vehicle-status",
+  "parameters": {
+    "vehicleId": "vehicle-12345"
+  }
+}

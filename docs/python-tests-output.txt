@@ -1,0 +1,16 @@
+test_mock_429_retry_after (test_edr.TestEDR.test_mock_429_retry_after) ... ok
+test_mock_5xx_timeout_permanent (test_edr.TestEDR.test_mock_5xx_timeout_permanent) ... ok
+test_mock_success (test_edr.TestEDR.test_mock_success) ... ok
+test_other_user_cannot_read (test_edr.TestEDR.test_other_user_cannot_read) ... ok
+test_result_only_after_success (test_edr.TestEDR.test_result_only_after_success) ... ok
+test_status (test_edr.TestEDR.test_status) ... ok
+test_submit_rejects_invalid (test_edr.TestEDR.test_submit_rejects_invalid) ... ok
+test_submit_rejects_unauthenticated (test_edr.TestEDR.test_submit_rejects_unauthenticated) ... ok
+test_submit_success (test_edr.TestEDR.test_submit_success) ... ok
+test_validate (test_edr.TestEDR.test_validate) ... ok
+test_workflow_structure (test_edr.TestEDR.test_workflow_structure) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.155s
+
+OK
